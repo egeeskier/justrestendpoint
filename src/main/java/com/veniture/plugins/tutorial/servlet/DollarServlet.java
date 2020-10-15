@@ -49,11 +49,24 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
-
+@Scanned
 public class DollarServlet extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(DollarServlet.class);
+    private static final String DOLLAR_TEMPLATE = ("/templates/dollarTemplate.vm");
 
+    @JiraImport
+    private TemplateRenderer templateRenderer;
+
+
+
+
+    public DollarServlet(TemplateRenderer templateRenderer){
+
+        this.templateRenderer=templateRenderer;
+
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -72,6 +85,9 @@ public class DollarServlet extends HttpServlet {
 
         String currency = (response.body().string());
 
+        resp.setContentType("text/html;charset=utf-8");
+
+        /*
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 
@@ -84,7 +100,13 @@ public class DollarServlet extends HttpServlet {
         out.println("<p>"+ currency +"tl"+"</p");
         out.println("</body>");
         out.println("</html>");
+        */
 
+        Map<String, Object> context = new HashMap<>();
+
+        context.put("currency",currency);
+
+        templateRenderer.render(DOLLAR_TEMPLATE, context, resp.getWriter());
 
     }
 

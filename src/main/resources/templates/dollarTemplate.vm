@@ -1,0 +1,13 @@
+
+<html>
+ <head>
+    <title>Edit Issue &mdash; Dollar Tutorial</title>
+    <meta name="decorator" content="atl.general">
+ </head>
+<body class="page-type-admin">
+  <div class="content-container">
+    <h1> 1 Dollar is: </h1>
+    <h1> $currency tl </h1>
+  </div>
+</body>
+</html>
