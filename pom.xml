@@ -23,6 +23,24 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.2-atlassian-1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>sax</groupId>
+            <artifactId>sax</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.owlike</groupId>
+            <artifactId>genson</artifactId>
+            <version>1.4</version>
+        </dependency>
+
         <dependency>
             <groupId>com.atlassian.sal</groupId>
             <artifactId>sal-api</artifactId>
@@ -63,10 +81,12 @@
             <version>1.1.1</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.2.2-atlassian-1</version>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-api</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -98,6 +118,29 @@
             <version>1.8.5</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>2.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180813</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.templaterenderer</groupId>
+            <artifactId>atlassian-template-renderer-api</artifactId>
+            <version>3.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.8.0-alpha0</version>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -136,6 +179,9 @@
                         <!-- Add package import here -->
                         <Import-Package>org.springframework.osgi.*;resolution:="optional", org.eclipse.gemini.blueprint.*;resolution:="optional", *</Import-Package>
                         <!-- Ensure plugin is spring powered -->
+                        <Import-Package>
+                            <!--                            com.atlassian.jira.workflow.condition.,--> org.springframework.osgi.;resolution:="optional", org.eclipse.gemini.blueprint.*;resolution:="optional", *;resolution:="optional"
+                        </Import-Package>
                         <Spring-Context>*</Spring-Context>
                     </instructions>
                 </configuration>
@@ -165,6 +211,7 @@
         </plugins>
     </build>
     <properties>
+        <jira.version>8.5.8</jira.version>
         <platform.version>5.0.0</platform.version>
         <refapp.version>5.0.0</refapp.version>
         <amps.version>8.0.2</amps.version>

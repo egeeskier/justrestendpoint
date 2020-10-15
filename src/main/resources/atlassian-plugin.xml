@@ -21,4 +21,10 @@
   <rest name="My Rest Resource" i18n-name-key="my-rest-resource.name" key="my-rest-resource" path="/myrestresource" version="1.0"> 
     <description key="my-rest-resource.description">The My Rest Resource Plugin</description> 
   </rest>
+
+  <servlet name="DollarServlet" i18n-name-key="Dollar.name" key="DollarServlet" class="com.veniture.plugins.tutorial.servlet.DollarServlet">
+    <description key="Dollar.description">The Dollar Plugin</description>
+    <url-pattern>/dollar</url-pattern>
+
+  </servlet>
 </atlassian-plugin>

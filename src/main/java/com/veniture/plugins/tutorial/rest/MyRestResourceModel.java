@@ -1,11 +1,10 @@
 package com.veniture.plugins.tutorial.rest;
 
 import javax.xml.bind.annotation.*;
-@XmlRootElement(name = "message")
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class MyRestResourceModel {
 
-    @XmlElement(name = "value")
+
     private String message;
 
     public MyRestResourceModel() {
