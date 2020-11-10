@@ -1,63 +1,45 @@
 package com.veniture.plugins.tutorial.rest;
-
 import com.atlassian.plugins.rest.common.security.AnonymousAllowed;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.veniture.plugins.tutorial.pojo.DollarBasedCurrency;
-import com.veniture.plugins.tutorial.pojo.Rates;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.util.Map;
 
 
 /**
- * A resource of message.
+ * A resource of group users.
  */
 
-@Path("/message")
+@Path("/user")
 public class MyRestResource {
-
     @GET
+    @Path("/Groups/{username}")
     @AnonymousAllowed
-    @Produces({MediaType.TEXT_PLAIN})
-    public Response getMessage()
-    {
-        String res = "";
-        try {
-            res = this.getCurrency();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return Response.ok(res).build();
-    }
-
-    private String getCurrency() throws IOException {
+    //@Produces({MediaType.APPLICATION_JSON})
+    public Response getGroups(@PathParam("username") String username) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
+        String url = "https://test.veniture.com.tr/rest/api/2/user?username="+username+"&expand=groups";
+
         Request request = new Request.Builder()
-                .url("https://api.currencyfreaks.com/latest?apikey=751ce34823ee432db41388d1c3a17e0b&format=json")
+                .url(url)
                 .method("GET", null)
-                .addHeader("Authorization", "Basic ZWdlLmVza2llcjpEZTYzNjQ5Ny8=")
-                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", "Basic ZWdlLmVza2llcjpTdGFydDEyMyE=")
+                //.addHeader("Cookie", "JSESSIONID=749F6AC3DAEB615D7688C6BA9836FEF9; atlassian.xsrf.token=BG12-C9VR-IIJ4-136H_a464e03b52209d4b956edf379b1f7b3d29a82053_lin")
                 .build();
 
         com.squareup.okhttp.Response response = client.newCall(request).execute();
 
-        JSONObject obj = new JSONObject(response.body().string());
+        String a = response.body().string();
 
-        String currency = obj.getJSONObject("rates").getString("TRY");
-
-        return currency;
-
-
+        return Response.ok().entity(a).build();
     }
 
 }

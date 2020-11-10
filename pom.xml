@@ -3,14 +3,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.veniture.plugins.tutorial</groupId>
-    <artifactId>intern</artifactId>
+    <artifactId>AS-hide-elements</artifactId>
     <version>1.0.0</version>
     <organization>
-        <name>Example Company</name>
-        <url>http://www.example.com/</url>
+        <name>VenITure</name>
+        <url>http://www.venITure.com.tr/</url>
     </organization>
-    <name>intern</name>
-    <description>This is the com.veniture.plugins.tutorial:intern plugin for Atlassian Refapp.</description>
+    <name>AS-hide-elements</name>
+    <description>AS-hide operations on service desk </description>
     <packaging>atlassian-plugin</packaging>
     <dependencies>
         <dependency>
