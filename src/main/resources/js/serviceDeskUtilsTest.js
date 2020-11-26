@@ -18,8 +18,8 @@ const groups_credentials =  {
 
       "Elements": [
         "346",
-        "486",
-        "350"
+        "348",
+        "360"
       ],
 
       "AllowedGroups": [
@@ -53,8 +53,16 @@ const groups_credentials =  {
   ]
 };
 
+function checkUrlForPortal(pathname){
 
+  var parts_url= pathname.split('/');
 
+  if(parts_url[parts_url.length-2]==="portal"){
+    return true;
+  }
+
+  return false;
+}
 
 function isUserInGroup(user_groups,AllowedGroups){
 
@@ -69,7 +77,6 @@ function isUserInGroup(user_groups,AllowedGroups){
     }
   return false;
 }
-
 
 function mapGroupsAndUser(groups_credentials,user_groups){
 
@@ -92,12 +99,16 @@ function mapGroupsAndUser(groups_credentials,user_groups){
  }
 
 
+var pathname = window.location.pathname;
+
+
+
 AJS.$(document).ready(function() {
 
   AJS.$.get("/rest/auth/1/session", function(data) {
 
     user = data.name;
-    console.log("username is " + user);
+    //console.log("username is " + user);
 
     var groups_url = "https://test.veniture.com.tr/rest/myrestresource/1.0/user/Groups/" + user;
 
@@ -129,8 +140,6 @@ AJS.$(document).ready(function() {
 
       console.log("user_groups are: " + user_groups);
 
-
-
       // hide functions
       setInterval(function() {
 
@@ -153,3 +162,6 @@ AJS.$(document).ready(function() {
   });
 
 });
+
+
+

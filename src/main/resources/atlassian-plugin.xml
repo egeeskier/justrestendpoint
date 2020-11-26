@@ -5,7 +5,7 @@
     <description>${project.description}</description>  
     <version>${project.version}</version>  
     <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
-    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugincls-icon">images/pluginIcon.png</param>
     <param name="plugin-logo">images/pluginLogo.png</param> 
   </plugin-info>  
   <!-- add our i18n resource -->  
@@ -13,7 +13,9 @@
   <!-- add our web resources -->  
   <web-resource key="intern-resources" name="Service Desk Web Resources">
     <dependency>com.atlassian.auiplugin:ajs</dependency>
-    <resource type="download" name="serviceDeskUtilsTest.js" location="/js/serviceDeskUtilsTest.js"/>
+    <resource type="download" name="serviceDeskUtils.js" location="/js/serviceDeskUtils.js"/>
+    <resource type="download" name="serviceDeskComments.js" location="/js/serviceDeskComments.js"/>
+    <resource type="download" name="serviceDeskToTurkish.js" location="/js/serviceDeskToTurkish.js"/>
     <context>customerportal</context>
   </web-resource>
 
